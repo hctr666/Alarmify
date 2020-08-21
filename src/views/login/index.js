@@ -1,13 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Linking } from 'react-native';
 import { UIButton } from './../../components/'
 
+import { spotifyAuth } from './../../services'
+
 export default function Login({ navigation }) {
+  const handleBtnLogin = async () => {
+    //() => navigation.navigate('Alarmify')
+    spotifyAuth()
+    //console.log(await Linking.canOpenURL('alarmify'))
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>Welcome to Alarmify!</Text>
-      <Text style={styles.instructions}>You must lorgin in Spotify before start using the app</Text>
-      <UIButton onPress={() => navigation.navigate('Alarmify')}>Login</UIButton>
+      <Text style={styles.instructions}>You must signin on Spotify before starting using the app</Text>
+      <UIButton onPress={handleBtnLogin}>Login</UIButton>
     </View>
   );
 }
